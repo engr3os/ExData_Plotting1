@@ -16,8 +16,8 @@ hpc_sub <- subset(hpc, dmy(Date) >= "2007-01-31 UTC" &
 hpc_sub$Date_Time = dmy_hms(paste(hpc_sub$Date, hpc_sub$Time))
 
 ## Plot the data
-plot(hpc_sub$Date_Time, hpc_sub$Global_active_power, type = "l",
-     ylab = "Global Active Power (kilowatts)", xlab = "")
+with(hpc_sub, plot(Date_Time, Global_active_power, type = "l",
+     ylab = "Global Active Power (kilowatts)", xlab = ""))
 
 ## Copy figure into png graphic device 
 dev.copy(png, file = "plot2.png")

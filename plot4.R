@@ -16,13 +16,25 @@ hpc_sub <- subset(hpc, dmy(Date) >= "2007-01-31 UTC" &
 hpc_sub$Date_Time = dmy_hms(paste(hpc_sub$Date, hpc_sub$Time))
 
 ## Plot the data
-plot(hpc_sub$Date_Time, hpc_sub$Sub_metering_1, type = "l", 
+par(mfrow = c(2,2),  mar = c(4,4,1,1), oma = c(0, 0, 0, 0))
+with(hpc_sub, plot(Date_Time, Global_active_power, type = "l",
+     ylab = "Global Active Power", xlab = ""))
+
+with(hpc_sub, plot(Date_Time, Voltage, type = "l",
+     ylab = "Voltage", xlab = "datetime"))
+
+with(hpc_sub, {
+  plot(Date_Time, Sub_metering_1, type = "l", 
      ylab = "Energy sub metering", xlab = "", col = "black")
-lines(hpc_sub$Date_Time, hpc_sub$Sub_metering_2, col="red")
-lines(hpc_sub$Date_Time, hpc_sub$Sub_metering_3, col="blue")
-legend("topright", lty = "solid", col = c("black", "red", "blue"),
+  lines(Date_Time, Sub_metering_2, col="red")
+  lines(Date_Time, Sub_metering_3, col="blue")
+  legend("topright", lty = "solid", col = c("black", "red", "blue"),
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+})
+with(hpc_sub, plot(Date_Time, Global_reactive_power, type = "l",
+     ylab = "Global_reactive_power", xlab = "datetime"))
+
 
 ## Copy figure into png graphic device 
-dev.copy(png, file = "plot3.png")
+dev.copy(png, file = "plot4.png")
 dev.off()
