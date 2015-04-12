@@ -29,7 +29,7 @@ with(hpc_sub, {
      ylab = "Energy sub metering", xlab = "", col = "black")
   lines(Date_Time, Sub_metering_2, col="red")
   lines(Date_Time, Sub_metering_3, col="blue")
-  legend("topright", lty = "solid", col = c("black", "red", "blue"), cex = 0.75,
+  legend("topright", lty = "solid", col = c("black", "red", "blue"), cex = 0.8,
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 })
 with(hpc_sub, plot(Date_Time, Global_reactive_power, type = "l",
