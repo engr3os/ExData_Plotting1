@@ -1,3 +1,6 @@
+## This script makes the plot2 of Exploratory Data Analysis Project 1
+## using the refrence data downloaded and uzipped into the working directory
+
 ## Point the working directore to the data
 setwd("~/ML_R/ExData_Plotting1")
 
@@ -13,7 +16,7 @@ hpc_sub <- subset(hpc, dmy(Date) >= "2007-01-31 UTC" &
                     dmy(Date) <= "2007-02-02 UTC")
 
 ## Combine Date and time
-hpc_sub$Date_Time = dmy_hms(paste(hpc_sub$Date, hpc_sub$Time))
+hpc_sub$Date_Time <- dmy_hms(paste(hpc_sub$Date, hpc_sub$Time))
 
 ## Plot the data
 with(hpc_sub, plot(Date_Time, Global_active_power, type = "l",

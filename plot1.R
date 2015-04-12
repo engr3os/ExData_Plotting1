@@ -1,3 +1,6 @@
+## This script makes the plot1 of Exploratory Data Analysis Project 1
+## using the refrence data downloaded and uzipped into the working directory
+
 ## Point the working directore to the data
 setwd("~/ML_R/ExData_Plotting1")
 
