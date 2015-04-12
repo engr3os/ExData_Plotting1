@@ -15,16 +15,14 @@ hpc_sub <- subset(hpc, dmy(Date) >= "2007-01-31 UTC" &
 ## Combine Date and time
 hpc_sub$Date_Time = dmy_hms(paste(hpc_sub$Date, hpc_sub$Time))
 
-## Plot the data
+## Plot the data to file
+png(file = "plot3.png")
 with(hpc_sub, {
   plot(Date_Time, Sub_metering_1, type = "l", 
      ylab = "Energy sub metering", xlab = "", col = "black")
   lines(Date_Time, Sub_metering_2, col="red")
   lines(Date_Time, Sub_metering_3, col="blue")
-  legend("topright", lty = "solid", col = c("black", "red", "blue"),
+  legend("topright", lty = "solid", col = c("black", "red", "blue"), cex = 0.8,
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 })
-
-## Copy figure into png graphic device 
-dev.copy(png, file = "plot3.png")
 dev.off()
